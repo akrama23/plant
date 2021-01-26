@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Urban Jungle</title>
+    <link rel="stylesheet" href="https://bootswatch.com/4/lux/bootstrap.min.css">
+    <link href="styles.css" rel="stylesheet">
+
+  </head>
+  <body>
+    <div class="center"><h1 class="header">The Urban Jungle<h1></div>
+      <div class="container">
+        <div id="main" class="row mt-4 d-flex">
+              <div class="col-sm mt-2">
+                <div class="eighty p-3">
+                  <form class="ui form">
+                    <div class="form-group">
+                      <h3>Add a New Plant</h3>
+                      <input name="name" class="form-control mb-2" type="text"placeholder="Enter Plant Name Here...">
+                      <input name="image" class="form-control mb-2" type="text"placeholder="Enter Image URL Here...">
+                      <input name="sun" class="form-control mb-2" type="text" placeholder="Enter Sun Preference Here...">
+                      <input name="water" class="form-control mb-2" type="text" placeholder="Enter Water Schedule Here...">
+                      <input class="btn btn-primary" type="submit">
+                    </div>
+                  </form>
+                </div>
+              </div>
+    
+              <div class="col-sm mt-2">
+                <div class="eighty p-3">
+                  <h3>Favorites</h3>
+                  <ul class="list-group" id='favorites'><ul>
+                </div>
+              </div>    
+            </div>
+
+            <div id="plant-display" class="container mt-5 p-3">
+              <div class="justify-content-center">
+                <h3 class="text-light">Say Hello To The Plants<h3>
+              </div>
+              <div id="plant-container" class="row">
+              </div>
+            </div>
+
+      </div>
+
+    <script type="text/javascript" src="src/comment.js"></script>
+    <script type="text/javascript" src="src/favorite.js"></script>
+    <script type="text/javascript" src="src/plant.js"></script>
+    <script type="text/javascript" src="src/user.js"></script>
+    <script type="text/javascript" src="src/index.js"></script>
+  </body>
+</html>
