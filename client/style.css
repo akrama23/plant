@@ -1,0 +1,23 @@
+.eighty {
+    background-color: #ccdee2;
+  }
+  
+  body {
+    background-color: #4b9ab4;
+  }
+  
+  .header {
+    text-align: center;
+    font-size: 50px;
+    background-color: #fff9e9;
+    padding: 30px;
+  }
+  
+  .card {
+    margin: auto !important;
+  }
+  
+  #plant-display {
+    background-color: #553f3a;
+  }
+  
