@@ -5,10 +5,11 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-
+require 'faker'
 Plant.destroy_all
 User.destroy_all
 Favorite.destroy_all
+Comment.destroy_all
 
 Plant.create(name: "Bonsai", sun: "direct sunlight", water:"Once a week, immerse entire plant in water until air bubbles have risen to the top.", image: "https://static.toiimg.com/thumb/resizemode-4,width-400,msid-73803862/73803862.jpg")
 Plant.create(name: "Pothos", sun: "indirect sunlight", water:"Water every 1-2 weeks, allowing the top half of the soil is dry.", image: "https://cdn.shopify.com/s/files/1/0013/3529/6118/products/Terracotta-Pot-6_Pothos-Jade-6.jpg?v=1544979630")
@@ -29,3 +30,10 @@ Favorite.create(plant: Plant.all.sample, user: User.all.sample)
 Favorite.create(plant: Plant.all.sample, user: User.all.sample)
 Favorite.create(plant: Plant.all.sample, user: User.all.sample)
 Favorite.create(plant: Plant.all.sample, user: User.all.sample)
+
+Comment.create(plant: Plant.all.sample, user: User.all.sample, comment: Faker::TvShows::FamilyGuy.quote)
+Comment.create(plant: Plant.all.sample, user: User.all.sample, comment: Faker::TvShows::FamilyGuy.quote)
+Comment.create(plant: Plant.all.sample, user: User.all.sample, comment: Faker::TvShows::FamilyGuy.quote)
+Comment.create(plant: Plant.all.sample, user: User.all.sample, comment: Faker::TvShows::FamilyGuy.quote)
+Comment.create(plant: Plant.all.sample, user: User.all.sample, comment: Faker::TvShows::FamilyGuy.quote)
+Comment.create(plant: Plant.all.sample, user: User.all.sample, comment: Faker::TvShows::FamilyGuy.quote)
