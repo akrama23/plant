@@ -1,10 +1,11 @@
 document.addEventListener('DOMContentLoaded', function(){
-    init()
+    loadPlants()
+    loadFavorites()
+    handleForm()
+    //call everything that we want to show IMMEDIATELY
 })
 
-function init(){
-    loadPlants() 
-}
+
 
 
 

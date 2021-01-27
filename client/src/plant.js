@@ -1,5 +1,6 @@
 const plantUrl = "http://localhost:3000/plants/"
 
+
 function loadPlants() {
     fetch(plantUrl)
         .then(res => res.json())
@@ -19,22 +20,50 @@ function renderPlants(plant){
     plantImage.src = plant.image
 
     let plantSun = document.createElement("h3")
-    plantSun.innerText = plant.sun
+    plantSun.innerText = `Sun preference: ${plant.sun}`
 
     let plantWater = document.createElement("h3")
-    plantWater.innerText = plant.water
+    plantWater.innerText = `Water Schedule: ${plant.water}`
 
+    let commentTitle = document.createElement("h4")
+    commentTitle.innerText = `Comments -`
 
-    // plant.comments.forEach(comment => {
-    //     // let plantComment = document.createElement("p")
-    //     // plantComment.innerText = comment
-        
-    // })
+    let plantUl = document.createElement("ul")
+    if (plant.comments){
+        plant.comments.forEach(comment => {
+            let plantComment = document.createElement("li")
+            plantComment.innerText = comment.comment
+            plantUl.append(plantComment)
+            
+        })
+    }
 
-    plantCard.append(plantName, plantImage, plantSun, plantWater)
+    plantCard.append(plantName, plantImage, plantSun, plantWater, commentTitle, plantUl)
+}
 
+function handleForm(){
+    document.querySelector('.ui-form').addEventListener('submit', (event) => {
+        event.preventDefault()
+        let newPlant = {
+            name: event.target.name.value,
+            image: event.target.image.value,
+            sun: event.target.sun.value,
+            water: event.target.water.value,
+        }
+
+        fetch(plantUrl, {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify(newPlant)
+        })
+        .then(r => r.json())
+        .then(renderPlants)
+
+    })
 
 }
+
+
 
     // Iterate over the reviews
     //  For each review, make a new li, update that li
