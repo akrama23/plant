@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function(){
     loadPlants()
     loadFavorites()
-    handleForm()
+    createForm()
     //call everything that we want to show IMMEDIATELY
 })
 
