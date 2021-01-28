@@ -100,6 +100,7 @@ function editPlant(event, plantId){
         method: "PATCH",
         body: JSON.stringify(updatedPlant)
     }
+    
 }
 
 
