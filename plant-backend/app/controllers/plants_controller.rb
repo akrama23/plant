@@ -16,6 +16,11 @@ class PlantsController < ApplicationController
         render json: plant, :include => [:comments]
     end
 
+    def update
+        Plant.find(params[:id]).update(plant_params)
+        render json: Plant.find(params[:id])
+    end 
+
     def destroy 
         plant = Plant.find(params[:id])
         render json: plant.destroy

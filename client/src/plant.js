@@ -31,11 +31,23 @@ function renderPlants(plant){
     let commentTitle = document.createElement("h4")
     commentTitle.innerText = `Comments -`
 
-    let button = document.createElement("button")
-        button.classList.add("btn","btn-primary")
-        button.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16"><path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/><path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/></svg>`
+    let editButton = document.createElement("button")
+        editButton.classList.add("btn","btn-primary")
+        editButton.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-three-dots" viewBox="0 0 16 16">
+        <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z" /></svg>`
         
-        button.addEventListener("click", () => {
+        editButton.addEventListener("click", (event) => {
+            event.preventDefault
+            editPlant(event, plant.id)
+        })
+
+    let removeButton = document.createElement("button")
+        removeButton.classList.add("btn","btn-outline-danger")
+        removeButton.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+        <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+        <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/></svg>`
+        
+        removeButton.addEventListener("click", () => {
             removePlant(plant.id)
         })
     let plantUl = document.createElement("ul")
@@ -48,7 +60,7 @@ function renderPlants(plant){
         })
     }
 
-    plantCard.append(plantName, plantImage, plantSun, plantWater, commentTitle, plantUl, button)
+    plantCard.append(plantName, plantImage, plantSun, plantWater, commentTitle, plantUl, editButton, removeButton)
 }
 
 function createForm(){
@@ -59,7 +71,7 @@ function createForm(){
             name: event.target.name.value,
             image: event.target.image.value,
             sun: event.target.sun.value,
-            water: event.target.water.value,
+            water: event.target.water.value
         }
 
         fetch(plantUrl, {
@@ -73,6 +85,23 @@ function createForm(){
     })
 
 }
+function editPlant(event, plantId){
+    console.log(event.target, plantId)
+    debugger
+    let updatedPlant = {
+        name: event.target.name.value,
+        image: event.target.image.value,
+        sun: event.target.sun.value,
+        water: event.target.water.value
+    }
+
+    let reqPack = {
+        headers: {"Content-Type": "application/json"},
+        method: "PATCH",
+        body: JSON.stringify(updatedPlant)
+    }
+}
+
 
 function removePlant(plantId){
     
