@@ -15,6 +15,11 @@ class PlantsController < ApplicationController
         # binding.pry
         render json: plant, :include => [:comments]
     end
+
+    def destroy 
+        plant = Plant.find(params[:id])
+        render json: plant.destroy
+    end 
     
     private
     def plant_params

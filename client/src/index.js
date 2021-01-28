@@ -1,8 +1,30 @@
+let addPlant = false;
+
 document.addEventListener('DOMContentLoaded', function(){
+    //call everything that we want to show IMMEDIATELY
+    
+    const addBtn = document.querySelector("#new-plant-btn");
+    const plantFormDiv = document.querySelector(".form-group");
+    const plantFavDiv = document.querySelector(".favorites");
+
+    
+    
+    addBtn.addEventListener("click", () => {
+        // hide & seek with the form
+        addPlant = !addPlant;
+        if (addPlant) {
+            plantFormDiv.style.display = "block";
+            plantFavDiv.style.display = "block";
+
+        } else {
+            plantFormDiv.style.display = "none";
+            plantFavDiv.style.display = "none";
+        }
+    });
     loadPlants()
     loadFavorites()
     createForm()
-    //call everything that we want to show IMMEDIATELY
+    
 })
 
 
