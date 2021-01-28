@@ -1,4 +1,4 @@
-let addPlant = false;
+let addPlant = true;
 
 document.addEventListener('DOMContentLoaded', function(){
     //call everything that we want to show IMMEDIATELY

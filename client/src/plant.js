@@ -5,12 +5,15 @@ const plantUrl = "http://localhost:3000/plants/"
 
 
 function loadPlants() {
+
     fetch(plantUrl)
         .then(res => res.json())
         .then(plants => plants.forEach(plant => renderPlants(plant)))
 }
 
 function renderPlants(plant){
+
+
     let plantContainer = document.querySelector("#plant-container")
     let plantCard = document.createElement('div')
     plantCard.className = "card"
@@ -36,9 +39,8 @@ function renderPlants(plant){
         editButton.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-three-dots" viewBox="0 0 16 16">
         <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z" /></svg>`
         
-        editButton.addEventListener("click", (event) => {
-            event.preventDefault
-            editPlant(event, plant.id)
+        editButton.addEventListener("click", () => {
+            editPlant(plant)
         })
 
     let removeButton = document.createElement("button")
@@ -85,22 +87,41 @@ function createForm(){
     })
 
 }
-function editPlant(event, plantId){
-    console.log(event.target, plantId)
-    debugger
+function editPlant(plant){
+    let editForm = document.querySelector('.ui-form')
+        editForm.name.value = plant.name 
+        editForm.image.value = plant.image
+        editForm.sun.value = plant.sun 
+        editForm.water.value = plant.water 
+
+  
+        editForm.addEventListener("submit", (event) => {
+            event.preventDefault
+            submitEdit(event, plant)
+
+        })
+
+
+
+}
+
+function submitEdit(event, plant){
+
     let updatedPlant = {
         name: event.target.name.value,
         image: event.target.image.value,
         sun: event.target.sun.value,
         water: event.target.water.value
     }
-
-    let reqPack = {
+        let reqPack = {
         headers: {"Content-Type": "application/json"},
         method: "PATCH",
         body: JSON.stringify(updatedPlant)
     }
-    
+    fetch(plantUrl + plant.id, reqPack)
+        .then(res => res.json())
+        .then(renderPlants)
+
 }
 
 
@@ -111,7 +132,9 @@ function removePlant(plantId){
         method: "DELETE",
         headers: {"Content-Type": "application/json"}
     })
+    .then( response => response.json())
     
+    // document.querySelector('.card').innerHTML = ""
     
 }
 
