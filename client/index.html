@@ -12,40 +12,53 @@
   
   <!-- <i class="bi bi-trash"></i> -->
   <body>
-    <div class="center container p-5"><h1 class="header">The Urban Jungle<h1></div>
+    <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light"><h1 class="header">The Urban Jungle<h1></div>
       <div class="container">
         <div id="main" class="row mt-4 d-flex">
-          <div class="col-sm mt-2">
+          <div class="col-sm mt-2 hidden" id="form-container">
             <div class="eighty p-3">
-              <form class="ui-form">
-                <div class="form-group" id="form">
+              <form class="ui-form" id="form">
+                <div class="form-group position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
                   <h3>Add a New Plant</h3>
+                  <h4 class="title-headers">Plant Name</h4>
                   <input name="name" class="form-control mb-2" type="text" value="" placeholder="Enter Plant Name Here..." >
+                  <h4 class="title-headers">Plant Image</h4>
                   <input name="image" class="form-control mb-2" type="text" value="" placeholder="Enter Image URL Here...">
-                  <input name="sun" class="form-control mb-2" type="text" value="" placeholder="Enter Sun Preference Here...">
-                  <input name="water" class="form-control mb-2" type="text" value="" placeholder="Enter Water Schedule Here...">
-                  <input class="btn btn-primary" type="submit">
+                  <h4 class="title-headers">Plant's Sun Preference</h4>
+                  <!-- <div class="form-group mb-2"> -->
+                    <select class="form-control" name="sun" class="form-control mb-2">
+                      <option>Select Sun Preference</option>
+                      <option>Indirect Sunlight</option>
+                      <option>Direct Sunlight</option>
+                      <option>No Sunlight</option>
+                    </select>
+                  <!-- </div> -->
+                  <h4 class="title-headers">Plant's Water Preference</h4>
+                  <select class="form-control" name="water" class="form-control mb-2">
+                    <option>Select Water Schedule</option>
+                    <option>Water once a day.</option>
+                    <option>Water once a week.</option>
+                    <option>Water twice a month.</option>
+                    <option>Water once a month.</option>
+                  </select>
+                  <br>
+                  <input class="btn btn-outline-dark" type="submit">
                 </div>
               </form>
             </div>
             <div id="topRight">
             </div>
       </div>
-              <div class="col-sm mt-2">
-                <div class="eighty p-3">
-    
-                  </div>
-                </div>  -->
-                 <br>
-                 <br>
-              </div>
+
+      
+             
               <p style="text-align:center">
-                <button id="new-plant-btn">Add/Edit a Plant</button>
+                <button class="btn btn-outline-dark" id="new-plant-btn">Add a New Plant</button>
               </p>
               
               <div id="plant-display" class="container mt-5 p-3">
-                <div class="justify-content-center">
-                  <h3 class="text-light">Say Hello To The Plants<h3>
+                <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
+                  <h3 class="text-dark">Say Hello To The Plants<h3>
                   </div>
                   <div id="plant-container" class="row">
                     

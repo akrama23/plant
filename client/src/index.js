@@ -1,4 +1,4 @@
-let addPlant = true;
+// let addPlant = true;
 
 document.addEventListener('DOMContentLoaded', function(){
     //call everything that we want to show IMMEDIATELY
@@ -8,19 +8,21 @@ document.addEventListener('DOMContentLoaded', function(){
     const plantFavDiv = document.querySelector(".favorites");
 
     
+    let formContainer = document.querySelector("#form-container")
     
     addBtn.addEventListener("click", () => {
+        formContainer.classList.toggle("hidden")
         // hide & seek with the form
-        addPlant = !addPlant;
-        if (addPlant) {
-            plantFormDiv.style.display = "block";
-            plantFavDiv.style.display = "block";
+        // addPlant = !addPlant;
+        // if (addPlant) {
+        //     plantFormDiv.style.display = "block";
+        //     plantFavDiv.style.display = "block";
 
-        } else {
-            plantFormDiv.style.display = "none";
-            plantFavDiv.style.display = "none";
+        // } else {
+        //     plantFormDiv.style.display = "none";
+        //     plantFavDiv.style.display = "none";
         }
-    });
+    );
     loadPlants()
     loadFavorites()
     createForm()

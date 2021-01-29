@@ -3,16 +3,16 @@
   }
   
   body {
-    background-image: url("https://c.stocksy.com/a/4bf200/z9/636558.jpg");
+    background-image: url("https://cdn.hipwallpaper.com/i/24/65/IpwGaj.jpg");
     background-size: cover;
     font-family: 'Poppins', sans-serif;
   }
   
   .header {
     text-align: center;
-    font-size: 50px;
+    font-size: 175px;
     background-color: #eeece8;
-    padding: 30px;
+    padding: 40px;
     font-family: 'Catamaran', sans-serif;
     
   }
@@ -20,11 +20,42 @@
  
   
   .card {
-    margin: auto !important;
+  text-align: center;
+  border: grey solid 1px;
+  padding: 1rem;
+  width: 50rem;
+  height: 50rem;
+  display: inline-grid;
+  /* margin: 1rem 2rem; */
+  box-shadow: 3px 4px #97b6ac;
+  margin: 0 auto;
+  float: none;
+  margin-bottom: 10px;
+}
+    
   }
   
   #plant-display {
-    background-color: #4c9796;
+    background-color: #eeece8;
+  }
+
+  .card-img-top {
+    justify-self: center;
+    height: 12rem;
+    width: auto;
+  }
+
+  .plant-list-title {
+    color: rgb(3, 1, 1);
+    text-align: center;
+  }
+
+  .title-headers {
+    text-align: left;
+  }
+
+  .hidden {
+    display: none;
   }
   
   

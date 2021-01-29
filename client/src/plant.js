@@ -21,7 +21,7 @@ function renderPlants(plant){
     plantCard.style = "width: 18rem;"
     plantContainer.appendChild(plantCard)
 
-    let plantName = document.createElement("h2")
+    let plantName = document.createElement("h3")
     plantName.className = "card-title"
     plantName.innerText = plant.name
 
@@ -43,7 +43,7 @@ function renderPlants(plant){
         editButton.classList.add("btn","btn-outline-dark")
         editButton.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-three-dots" viewBox="0 0 16 16">
         <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z" /></svg>`
-        
+        editButton.innerText = "EDIT"
         editButton.addEventListener("click", (event) => {
             event.preventDefault()
             editPlant(plant, event)
@@ -149,7 +149,7 @@ function editPlant(plant, event){
         editWater.placeholder = plant.water
 
     let btn = document.createElement("input")
-        btn.clasName = "btn btn-primary"
+        btn.className = "btn btn-primary"
         btn.type = "submit"
 
         formDiv.append(editName, editImage, editSun, editWater, btn)
