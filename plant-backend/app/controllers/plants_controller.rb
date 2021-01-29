@@ -17,13 +17,14 @@ class PlantsController < ApplicationController
     end
 
     def update
-        Plant.find(params[:id]).update(plant_params)
-        render json: Plant.find(params[:id])
+        plant = Plant.find(params[:id]).update(plant_params)
+        render json: plant
     end 
 
     def destroy 
         plant = Plant.find(params[:id])
-        render json: plant.destroy
+        plant.destroy
+        render json: {"Deleted": "deleteddd"}
     end 
     
     private
