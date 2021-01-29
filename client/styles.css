@@ -3,22 +3,29 @@
   }
   
   body {
-    background-color: #4b9ab4;
+    background-image: url("https://c.stocksy.com/a/4bf200/z9/636558.jpg");
+    background-size: cover;
+    font-family: 'Poppins', sans-serif;
   }
   
   .header {
     text-align: center;
     font-size: 50px;
-    background-color: #fff9e9;
+    background-color: #eeece8;
     padding: 30px;
+    font-family: 'Catamaran', sans-serif;
+    
   }
+
+ 
   
   .card {
     margin: auto !important;
   }
   
   #plant-display {
-    background-color: #553f3a;
+    background-color: #4c9796;
   }
+  
   
   

@@ -16,14 +16,19 @@ function renderPlants(plant){
 
     let plantContainer = document.querySelector("#plant-container")
     let plantCard = document.createElement('div')
+    plantCard.id = `plant-${plant.id}`
     plantCard.className = "card"
+    plantCard.style = "width: 18rem;"
     plantContainer.appendChild(plantCard)
 
     let plantName = document.createElement("h2")
+    plantName.className = "card-title"
     plantName.innerText = plant.name
 
     let plantImage = document.createElement("img")
+    plantImage.className = "card-img-top"
     plantImage.src = plant.image
+
 
     let plantSun = document.createElement("h3")
     plantSun.innerText = `Sun preference: ${plant.sun}`
@@ -35,22 +40,22 @@ function renderPlants(plant){
     commentTitle.innerText = `Comments -`
 
     let editButton = document.createElement("button")
-        editButton.classList.add("btn","btn-primary")
+        editButton.classList.add("btn","btn-outline-dark")
         editButton.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-three-dots" viewBox="0 0 16 16">
         <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z" /></svg>`
-        
+        editButton.innerText = "Edit"
         editButton.addEventListener("click", () => {
             editPlant(plant)
         })
 
     let removeButton = document.createElement("button")
-        removeButton.classList.add("btn","btn-outline-danger")
+        removeButton.classList.add("btn","btn-outline-dark")
         removeButton.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
         <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
         <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/></svg>`
         
         removeButton.addEventListener("click", () => {
-            removePlant(plant.id)
+            removePlant(plant)
         })
     let plantUl = document.createElement("ul")
     if (plant.comments){
@@ -125,26 +130,23 @@ function submitEdit(event, plant){
 }
 
 
-function removePlant(plantId){
+function removePlant(plant){
     
-    let id =  plantId
+    let id =  plant.id
     fetch(plantUrl + id, {
         method: "DELETE",
         headers: {"Content-Type": "application/json"}
     })
     .then( response => response.json())
-    
+    //what are we doing AFTER we delete on server
+    .then(data => erasePlant(id))
     // document.querySelector('.card').innerHTML = ""
     
 }
 
-    // Iterate over the reviews
-    //  For each review, make a new li, update that li
-    //  with the review text, and then, append that to the ul
-    // let reviewBox = document.querySelector(".reviews")
-    //     reviewBox.innerHTML = ""
-    // beer.reviews.forEach(review => {
-    //     let newLi = document.createElement('li')
-    //     newLi.innerText = review
-    //     document.querySelector(".reviews").appendChild(newLi) 
-    // }) 
+function erasePlant(id){
+    console.log(id)
+    let card = document.querySelector(`#plant-${id}`)
+    card.remove()
+}
+
