@@ -43,9 +43,10 @@ function renderPlants(plant){
         editButton.classList.add("btn","btn-outline-dark")
         editButton.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-three-dots" viewBox="0 0 16 16">
         <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z" /></svg>`
-        editButton.innerText = "Edit"
-        editButton.addEventListener("click", () => {
-            editPlant(plant)
+        
+        editButton.addEventListener("click", (event) => {
+            event.preventDefault()
+            editPlant(plant, event)
         })
 
     let removeButton = document.createElement("button")
@@ -71,7 +72,7 @@ function renderPlants(plant){
 }
 
 function createForm(){
-    let uiForm = document.querySelector('.ui-form')
+    let uiForm = document.querySelector('#form')
         uiForm.addEventListener('submit', (event) => {
         event.preventDefault()
         let newPlant = {
@@ -92,21 +93,71 @@ function createForm(){
     })
 
 }
-function editPlant(plant){
-    let editForm = document.querySelector('.ui-form')
-        editForm.name.value = plant.name 
-        editForm.image.value = plant.image
-        editForm.sun.value = plant.sun 
-        editForm.water.value = plant.water 
+function editPlant(plant, event){
+    console.log(event.target.parentNode)
+    // let editForm = document.querySelector('.ui-form')
+    //     editForm.name.value = plant.name 
+    //     editForm.image.value = plant.image
+    //     editForm.sun.value = plant.sun 
+    //     editForm.water.value = plant.water 
 
   
-        editForm.addEventListener("submit", (event) => {
-            event.preventDefault
-            submitEdit(event, plant)
+    //     editForm.addEventListener("submit", (event) => {
+    //         event.preventDefault
+    //         submitEdit(event, plant)
 
-        })
+    //     })
+//     <form class="ui-form">
+//     <div class="form-group" id="form">
+//       <h3>Add a New Plant</h3>
+//       <input name="name" class="form-control mb-2" type="text" value="" placeholder="Enter Plant Name Here..." >
+//       <input name="image" class="form-control mb-2" type="text" value="" placeholder="Enter Image URL Here...">
+//       <input name="sun" class="form-control mb-2" type="text" value="" placeholder="Enter Sun Preference Here...">
+//       <input name="water" class="form-control mb-2" type="text" value="" placeholder="Enter Water Schedule Here...">
+//       <input class="btn btn-primary" type="submit">
+//     </div>
+//   </form>
+
+    let editForm = document.createElement("form")
+        editForm.className = "ui-form"
 
 
+    let formDiv = document.createElement("div")
+        formDiv.className = "form-group"
+    let editName = document.createElement("input")
+        editName.name = "name"
+        editName.className = "form-control mb-2"
+        editName.type = "text"
+        editName.placeholder = plant.name
+
+    let editImage = document.createElement("input")
+        editImage.className = "form-control mb-2"
+        editImage.name = "image"
+        editImage.type = "text"
+        editImage.placeholder = plant.image
+
+    let editSun = document.createElement("input")
+        editSun.className = "form-control mb-2"
+        editSun.name = "sun"
+        editSun.type = "text"
+        editSun.placeholder = plant.sun
+
+    let editWater = document.createElement("input")
+        editWater.className = "form-control mb-2"
+        editWater.name = "water"
+        editWater.type = "text"
+        editWater.placeholder = plant.water
+
+    let btn = document.createElement("input")
+        btn.clasName = "btn btn-primary"
+        btn.type = "submit"
+
+        formDiv.append(editName, editImage, editSun, editWater, btn)
+        editForm.append(formDiv)
+
+        document.querySelector("#topRight").innerHTML = ""
+        document.querySelector("#topRight").append(editForm)
+         
 
 }
 
@@ -118,6 +169,7 @@ function submitEdit(event, plant){
         sun: event.target.sun.value,
         water: event.target.water.value
     }
+   
         let reqPack = {
         headers: {"Content-Type": "application/json"},
         method: "PATCH",
