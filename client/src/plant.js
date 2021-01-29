@@ -31,6 +31,7 @@ function renderPlants(plant){
 
 
     let plantSun = document.createElement("h3")
+    plantSun.className = "font-weight-bold"
     plantSun.innerText = `Sun preference: ${plant.sun}`
 
     let plantWater = document.createElement("h3")
@@ -128,28 +129,28 @@ function editPlant(plant, event){
         editName.name = "name"
         editName.className = "form-control mb-2"
         editName.type = "text"
-        editName.placeholder = plant.name
+        editName.value = plant.name
 
     let editImage = document.createElement("input")
         editImage.className = "form-control mb-2"
         editImage.name = "image"
         editImage.type = "text"
-        editImage.placeholder = plant.image
+        editImage.value = plant.image
 
     let editSun = document.createElement("input")
         editSun.className = "form-control mb-2"
         editSun.name = "sun"
         editSun.type = "text"
-        editSun.placeholder = plant.sun
+        editSun.value = plant.sun
 
     let editWater = document.createElement("input")
         editWater.className = "form-control mb-2"
         editWater.name = "water"
         editWater.type = "text"
-        editWater.placeholder = plant.water
+        editWater.value = plant.water
 
     let btn = document.createElement("input")
-        btn.className = "btn btn-primary"
+        btn.className = "btn btn-outline-dark"
         btn.type = "submit"
 
         formDiv.append(editName, editImage, editSun, editWater, btn)
@@ -157,6 +158,12 @@ function editPlant(plant, event){
 
         document.querySelector("#topRight").innerHTML = ""
         document.querySelector("#topRight").append(editForm)
+
+        editForm.addEventListener("submit", (event) => {
+            event.preventDefault()
+            submitEdit(event, plant)
+        
+                })
          
 
 }
