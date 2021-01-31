@@ -18,6 +18,7 @@ class PlantsController < ApplicationController
 
     def update
         plant = Plant.find(params[:id]).update(plant_params)
+        # binding.pry
         render json: plant
     end 
 

@@ -95,7 +95,7 @@ function createForm(){
 
 }
 function editPlant(plant, event){
-    console.log(event.target.parentNode)
+    // console.log(event.target.parentNode)
     // let editForm = document.querySelector('.ui-form')
     //     editForm.name.value = plant.name 
     //     editForm.image.value = plant.image
@@ -176,6 +176,7 @@ function submitEdit(event, plant){
         sun: event.target.sun.value,
         water: event.target.water.value
     }
+    console.log(updatedPlant)
    
         let reqPack = {
         headers: {"Content-Type": "application/json"},
